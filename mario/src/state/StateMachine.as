@@ -1,43 +1,45 @@
 package state
 {
+	import base.AbstractController;
+
 	public class StateMachine
 	{
-		private var mOwner:Object;
-		private var mCurrentState:IState;
-		private var mPreviousState:IState;
-		private var mGlobalState:IState;
+		private var mOwner:AbstractController;
+		private var mCurrentState:AbstractState;
+		private var mPreviousState:AbstractState;
+		private var mGlobalState:AbstractState;
 		
-		public function StateMachine(o:Object)
+		public function StateMachine(o:AbstractController)
 		{
 			mOwner = o;
 		}
 		
-		public function set currentState(value:IState):void
+		public function set currentState(value:AbstractState):void
 		{
 			mCurrentState = value;
 		}
 		
-		public function get currentState( ):IState
+		public function get currentState( ):AbstractState
 		{
 			return mCurrentState;
 		}
 		
-		public function set previousState(value:IState):void
+		public function set previousState(value:AbstractState):void
 		{
 			mPreviousState = value;
 		}
 		
-		public function get previousState( ):IState
+		public function get previousState( ):AbstractState
 		{
 			return mPreviousState;
 		}
 		
-		public function set globalState(value:IState):void
+		public function set globalState(value:AbstractState):void
 		{
 			mGlobalState = value;
 		}
 		
-		public function get globalState( ):IState
+		public function get globalState( ):AbstractState
 		{
 			return mGlobalState;
 		}
@@ -47,7 +49,7 @@ package state
 			mCurrentState.excute(mOwner);
 		}
 		
-		public function changeState(newState:IState):void
+		public function changeState(newState:AbstractState):void
 		{
 			mPreviousState = mCurrentState;
 			mCurrentState.exit(mOwner);
@@ -60,7 +62,7 @@ package state
 			changeState(mPreviousState);
 		}
 		
-		public function isInState(value:IState):Boolean
+		public function isInState(value:AbstractState):Boolean
 		{
 			if(mCurrentState.name == value.name)
 			{

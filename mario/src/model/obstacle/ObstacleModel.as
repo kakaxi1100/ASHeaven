@@ -15,7 +15,7 @@ package model.obstacle
 		{
 			mData = data;
 			mView = new ObstacleView();
-			mControl = new ObstacleController();
+			mControl = new ObstacleController(mData, mView);
 		}
 		
 		public function showObstacle(parent:DisplayObjectContainer, posx:Number, posy:Number):void

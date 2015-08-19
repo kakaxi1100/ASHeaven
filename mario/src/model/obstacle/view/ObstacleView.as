@@ -2,7 +2,9 @@ package model.obstacle.view
 {
 	import flash.display.Sprite;
 	
-	public class ObstacleView extends Sprite
+	import base.AbstractView;
+	
+	public class ObstacleView extends AbstractView
 	{
 		private var mSkin:Sprite;
 		public function ObstacleView()

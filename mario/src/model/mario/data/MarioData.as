@@ -1,6 +1,8 @@
 package model.mario.data
 {
-	public class MarioData
+	import base.AbstractData;
+
+	public class MarioData extends AbstractData
 	{
 		public function MarioData()
 		{

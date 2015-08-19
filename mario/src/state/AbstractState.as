@@ -1,16 +1,18 @@
 package state
 {
-	public class AbstractState implements IState
+	import base.AbstractController;
+
+	public class AbstractState
 	{
 		private var mName:String;
-		private var mOwner:Object;
-		public function AbstractState(name:String, o:Object)
+		private var mOwner:AbstractController;
+		public function AbstractState(name:String, o:AbstractController)
 		{
 			mName = name;
 			mOwner = o;
 		}
 		
-		public function get owner():Object
+		public function get owner():AbstractController
 		{
 			return mOwner;
 		}
@@ -20,15 +22,15 @@ package state
 			return mName;
 		}
 		
-		public function enter(o:Object):void
+		public function enter(o:AbstractController):void
 		{
 		}
 		
-		public function exit(o:Object):void
+		public function exit(o:AbstractController):void
 		{
 		}
 		
-		public function excute(o:Object):void
+		public function excute(o:AbstractController):void
 		{
 		}
 	}

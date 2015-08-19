@@ -1,6 +1,8 @@
 package model.obstacle.data
 {
-	public class ObstacleData
+	import base.AbstractData;
+
+	public class ObstacleData extends AbstractData
 	{
 		public function ObstacleData()
 		{
