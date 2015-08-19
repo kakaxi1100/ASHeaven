@@ -1,7 +1,7 @@
 # Build and Release Folders
-bin/
-bin-debug/
-bin-release/
+mario/bin/
+mario/bin-debug/
+mario/bin-release/
 
 # Other files and folders
 .settings/
