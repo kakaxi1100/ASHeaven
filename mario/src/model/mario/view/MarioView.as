@@ -1,10 +1,8 @@
 package model.mario.view
 {
 	import flash.display.Sprite;
-	
-	import base.AbstractView;
 
-	public class MarioView extends AbstractView
+	public class MarioView extends Sprite
 	{
 		private var mSkin:Sprite;
 		public function MarioView()
@@ -15,6 +13,16 @@ package model.mario.view
 			mSkin.graphics.drawRect(0,0,20,20);
 			mSkin.graphics.endFill();
 			addChild(mSkin);
+		}
+		
+		public function walk():void
+		{
+			this.x++;
+		}
+		
+		public function update():void
+		{
+			
 		}
 	}
 }

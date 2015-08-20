@@ -1,27 +1,45 @@
 package state
 {
-	import base.AbstractController;
-
-	public class WalkState extends AbstractState
+	import base.port.IState;
+	
+	public class WalkState implements IState
 	{
-		public function WalkState(name:String, o:AbstractController)
+		private var mName:String;
+		private var mModel:Object;
+		
+		private static var instance:WalkState;
+		public function WalkState(name:String, model:Object)
 		{
-			super(name, o);
+			mName = name;
+			mModel = model;
+		}
+		public static function getInstance(name:String, model:Object):WalkState
+		{
+			return instance ||= new WalkState(name, model);
 		}
 		
-		override public function enter(o:AbstractController):void
+		public function get owner():Object
+		{
+			return mModel;
+		}
+		
+		public function get name():String
+		{
+			return mName;
+		}
+		
+		public function enter(o:Object):void
+		{
+		}
+		
+		public function exit(o:Object):void
 		{
 			
 		}
 		
-		override public function exit(o:AbstractController):void
+		public function excute(o:Object):void
 		{
-			
-		}
-		
-		override public function excute(o:AbstractController):void
-		{
-			owner.view.x++;
+			mModel.walk();
 		}
 	}
 }

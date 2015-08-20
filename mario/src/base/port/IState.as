@@ -1,10 +1,10 @@
-package state
+package base.port
 {
-	import base.AbstractController;
+	
 
 	public interface IState
 	{
-		function get owner():AbstractController;
+		function get owner():Object;
 		function get name():String;
 		function enter(o:Object):void;
 		function exit(o:Object):void;

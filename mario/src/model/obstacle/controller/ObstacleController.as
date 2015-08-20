@@ -1,15 +1,12 @@
 package model.obstacle.controller
 {
-	import base.AbstractController;
-	
-	import model.obstacle.data.ObstacleData;
-	import model.obstacle.view.ObstacleView;
+	import model.obstacle.ObstacleModel;
 
-	public class ObstacleController extends AbstractController
+	public class ObstacleController
 	{
-		public function ObstacleController(data:ObstacleData, view:ObstacleView)
+		public function ObstacleController(model:ObstacleModel)
 		{
-			super(data, view);
+			
 		}
 	}
 }

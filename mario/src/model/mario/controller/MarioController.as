@@ -1,26 +1,31 @@
 package model.mario.controller
 {
-	import base.AbstractController;
+	import base.StateMachine;
 	
-	import model.mario.data.MarioData;
-	import model.mario.view.MarioView;
+	import model.mario.MarioModel;
 	
-	import state.StateMachine;
 	import state.WalkState;
 
-	public class MarioController extends AbstractController
+	public class MarioController
 	{
 		private var stateMachine:StateMachine;
-		private var mData:MarioData;
-		private var mView:MarioView;
+		private var mModel:MarioModel;
 		
-		public function MarioController(data:MarioData, view:MarioView)
+		public function MarioController(model:MarioModel)
 		{
-			super(data, view);
-			mData = data;
-			mView = view;
-			stateMachine = new  StateMachine(this);
-			stateMachine.currentState = new WalkState("walk", this);
+			mModel = model;
+			stateMachine = new  StateMachine(mModel);
+			stateMachine.currentState = WalkState.getInstance("walkstate", mModel);
+		}
+		
+		public function collection():void
+		{
+			
+		}
+		
+		public function update():void
+		{
+			stateMachine.update();
 		}
 	}
 }

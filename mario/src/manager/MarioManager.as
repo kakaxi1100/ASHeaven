@@ -27,5 +27,10 @@ package manager
 		{
 			mMario.showMario(parent, posx, posy);
 		}
+		
+		public function update():void
+		{
+			mMario.update();
+		}
 	}
 }
