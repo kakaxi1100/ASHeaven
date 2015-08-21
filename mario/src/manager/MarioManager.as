@@ -18,9 +18,9 @@ package manager
 			return instance ||= new MarioManager();
 		}
 		
-		public function initModel(data:MarioData):void
+		public function initModel():void
 		{
-			mMario = new MarioModel(data);
+			mMario = new MarioModel();
 		}
 		
 		public function showMario(parent:DisplayObjectContainer, posx:Number = 0, posy:Number = 0):void

@@ -15,7 +15,7 @@ package
 		public function mario()
 		{
 			//1
-			MarioManager.getInstance().initModel(new MarioData());
+			MarioManager.getInstance().initModel();
 			MarioManager.getInstance().showMario(this);
 			
 			ObstacleManager.getInstance().initModel(new ObstacleData());
