@@ -14,5 +14,15 @@ package model.obstacle.view
 			mSkin.graphics.endFill();
 			addChild(mSkin);
 		}
+		
+		public function collision():void
+		{
+			mSkin.graphics.clear();
+			
+			mSkin.graphics.beginFill(0xccFF00,1);
+			mSkin.graphics.drawRect(0,0,20,20);
+			mSkin.graphics.endFill();
+			addChild(mSkin);
+		}
 	}
 }

@@ -3,7 +3,6 @@ package manager
 	import flash.display.DisplayObjectContainer;
 	
 	import model.obstacle.ObstacleModel;
-	import model.obstacle.data.ObstacleData;
 
 	public class ObstacleManager
 	{
@@ -17,14 +16,19 @@ package manager
 			return instance ||= new ObstacleManager();
 		}
 		
-		public function initModel(data:ObstacleData):void
+		public function initModel():void
 		{
-			mObstacle = new ObstacleModel(data);
+			mObstacle = new ObstacleModel();
 		}
 		
 		public function showObstacle(parent:DisplayObjectContainer, posx:Number = 0, posy:Number = 0):void
 		{
 			mObstacle.showObstacle(parent, posx, posy);
+		}
+		
+		public function getModel():ObstacleModel
+		{
+			return mObstacle;
 		}
 	}
 }

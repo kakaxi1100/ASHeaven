@@ -2,26 +2,31 @@ package model.mario
 {
 	import flash.display.DisplayObjectContainer;
 	
+	import base.StateMachine;
 	import base.port.ICollisional;
-	import base.port.IModel;
-	import base.port.IView;
 	import base.port.IWalkable;
 	
 	import model.mario.controller.MarioController;
 	import model.mario.data.MarioData;
 	import model.mario.view.MarioView;
+	
+	import state.WalkState;
 
-	public class MarioModel implements IWalkable, ICollisional, IModel
+	public class MarioModel implements IWalkable, ICollisional
 	{
 		private var mData:MarioData;
 		private var mView:MarioView;
 		private var mControl:MarioController;
+		private var stateMachine:StateMachine;
 		
 		public function MarioModel()
 		{
 			mData = new MarioData();
 			mView = new MarioView(mData);
-			mControl = new MarioController(this);
+			mControl = new MarioController(mData);
+			
+			stateMachine = new  StateMachine(this);
+			stateMachine.currentState = WalkState.getInstance("walkstate", this);
 		}
 		
 		public function showMario(parent:DisplayObjectContainer,  posx:Number , posy:Number):void
@@ -36,27 +41,33 @@ package model.mario
 			mView.walk();
 		}
 		
+		public function checkCollsion(c:ICollisional):void
+		{
+			if(mView.x >= c.result().x)
+			{
+				collisional();
+				c.collisional();
+			}
+		}
+		
 		public function update():void
 		{
-			mView.update();
 			mControl.update();
+			stateMachine.update();
+			mView.update();
 		}
 		
-		public function collisional(o:IModel):void
+		//碰撞之后变成什么样子
+		public function collisional():void
 		{
-			mControl.collision(o);
+			mView.collision();
+			mControl.collision();
 		}
-		
-		public function get view():IView
-		{
-			return mView;
-		}
-		
-		public function hello():void
+		//实时传出检测结果
+		public function result():Object
 		{
 			// TODO Auto Generated method stub
-			
+			return null;
 		}
-		
 	}
 }

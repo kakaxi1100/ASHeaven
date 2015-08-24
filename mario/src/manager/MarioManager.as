@@ -2,6 +2,8 @@ package manager
 {
 	import flash.display.DisplayObjectContainer;
 	
+	import base.port.ICollisional;
+	
 	import model.mario.MarioModel;
 	import model.mario.data.MarioData;
 
@@ -26,6 +28,11 @@ package manager
 		public function showMario(parent:DisplayObjectContainer, posx:Number = 0, posy:Number = 0):void
 		{
 			mMario.showMario(parent, posx, posy);
+		}
+		
+		public function checkCollision(c:ICollisional):void
+		{
+			mMario.checkCollsion(c);
 		}
 		
 		public function update():void

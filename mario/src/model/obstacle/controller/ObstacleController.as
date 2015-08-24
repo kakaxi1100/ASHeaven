@@ -1,10 +1,10 @@
 package model.obstacle.controller
 {
-	import model.obstacle.ObstacleModel;
+	import model.obstacle.data.ObstacleData;
 
 	public class ObstacleController
 	{
-		public function ObstacleController(model:ObstacleModel)
+		public function ObstacleController(pData:ObstacleData)
 		{
 			
 		}

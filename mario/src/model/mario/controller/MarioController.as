@@ -1,35 +1,24 @@
 package model.mario.controller
 {
-	import base.StateMachine;
-	import base.port.IModel;
-	
-	import model.mario.MarioModel;
-	
-	import state.WalkState;
+	import model.mario.data.MarioData;
 
 	public class MarioController
 	{
-		private var stateMachine:StateMachine;
-		private var mModel:MarioModel;
+		private var data:MarioData;
 		
-		public function MarioController(model:MarioModel)
+		public function MarioController(pData:MarioData)
 		{
-			mModel = model;
-			stateMachine = new  StateMachine(mModel);
-			stateMachine.currentState = WalkState.getInstance("walkstate", mModel);
+			data = pData;
 		}
 		
-		public function collision(model:IModel):void
+		public function collision():void
 		{
-			if(mModel.view.getPosition().x >= model.view.getPosition().x);
-			{
-				
-			}
+			data.isCollide = true;
 		}
 		
 		public function update():void
 		{
-			stateMachine.update();
+			//检测是否发生碰撞
 		}
 	}
 }

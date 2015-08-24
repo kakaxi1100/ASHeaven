@@ -6,9 +6,6 @@ package
 	import manager.MarioManager;
 	import manager.ObstacleManager;
 	
-	import model.mario.data.MarioData;
-	import model.obstacle.data.ObstacleData;
-	
 	[SWF(backgroundColor = "0xcccccc", frameRate="60")]
 	public class mario extends Sprite
 	{
@@ -18,7 +15,7 @@ package
 			MarioManager.getInstance().initModel();
 			MarioManager.getInstance().showMario(this);
 			
-			ObstacleManager.getInstance().initModel(new ObstacleData());
+			ObstacleManager.getInstance().initModel();
 			ObstacleManager.getInstance().showObstacle(this, 100, 0);
 			
 			addEventListener(Event.ADDED_TO_STAGE, onAddHandler);
@@ -32,6 +29,7 @@ package
 		
 		private function onEnterFrame(e:Event):void
 		{
+			MarioManager.getInstance().checkCollision(ObstacleManager.getInstance().getModel());
 			MarioManager.getInstance().update();
 		}
 	}
