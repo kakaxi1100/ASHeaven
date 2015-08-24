@@ -47,7 +47,9 @@ package base
 		
 		public function update():void
 		{
-			mCurrentState.excute(mOwner);
+			if(mCurrentState != null){
+				mCurrentState.excute(mOwner);
+			}
 		}
 		
 		public function changeState(newState:IState):void

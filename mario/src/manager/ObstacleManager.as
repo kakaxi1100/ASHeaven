@@ -6,7 +6,7 @@ package manager
 
 	public class ObstacleManager
 	{
-		private var mObstacle:ObstacleModel;
+		private var mModel:ObstacleModel;
 		private static var instance:ObstacleManager;
 		public function ObstacleManager()
 		{
@@ -18,17 +18,17 @@ package manager
 		
 		public function initModel():void
 		{
-			mObstacle = new ObstacleModel();
+			mModel = new ObstacleModel();
 		}
 		
 		public function showObstacle(parent:DisplayObjectContainer, posx:Number = 0, posy:Number = 0):void
 		{
-			mObstacle.showObstacle(parent, posx, posy);
+			mModel.showObstacle(parent, posx, posy);
 		}
 		
 		public function getModel():ObstacleModel
 		{
-			return mObstacle;
+			return mModel;
 		}
 	}
 }

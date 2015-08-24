@@ -4,9 +4,6 @@ package model.obstacle
 	
 	import base.port.ICollisional;
 	
-	import model.obstacle.controller.ObstacleController;
-	import model.obstacle.data.ObstacleData;
-	import model.obstacle.view.ObstacleView;
 
 	public class ObstacleModel implements ICollisional
 	{

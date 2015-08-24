@@ -2,7 +2,9 @@ package
 {
 	import flash.display.Sprite;
 	import flash.events.Event;
+	import flash.events.MouseEvent;
 	
+	import manager.BulletsManager;
 	import manager.MarioManager;
 	import manager.ObstacleManager;
 	
@@ -18,6 +20,8 @@ package
 			ObstacleManager.getInstance().initModel();
 			ObstacleManager.getInstance().showObstacle(this, 100, 0);
 			
+			BulletsManager.getInstance().initModel();
+			
 			addEventListener(Event.ADDED_TO_STAGE, onAddHandler);
 		}
 		
@@ -25,12 +29,21 @@ package
 		{
 			this.removeEventListener(Event.ADDED_TO_STAGE, onAddHandler);
 			stage.addEventListener(Event.ENTER_FRAME, onEnterFrame);
+			stage.addEventListener(MouseEvent.CLICK, onClickHandler);
+		}
+		
+		private function onClickHandler(e:MouseEvent):void
+		{
+			MarioManager.getInstance().createBullets(BulletsManager.getInstance().getModel());
 		}
 		
 		private function onEnterFrame(e:Event):void
 		{
 			MarioManager.getInstance().checkCollision(ObstacleManager.getInstance().getModel());
 			MarioManager.getInstance().update();
+			
+			BulletsManager.getInstance().checkCollision(ObstacleManager.getInstance().getModel());
+			BulletsManager.getInstance().update();
 		}
 	}
 }

@@ -3,16 +3,15 @@ package model.mario
 	import flash.display.DisplayObjectContainer;
 	
 	import base.StateMachine;
+	import base.port.IBullets;
 	import base.port.ICollisional;
+	import base.port.IIdleable;
 	import base.port.IWalkable;
 	
-	import model.mario.controller.MarioController;
-	import model.mario.data.MarioData;
-	import model.mario.view.MarioView;
-	
+	import state.IdleSate;
 	import state.WalkState;
 
-	public class MarioModel implements IWalkable, ICollisional
+	public class MarioModel implements IIdleable, IWalkable, ICollisional
 	{
 		private var mData:MarioData;
 		private var mView:MarioView;
@@ -26,7 +25,13 @@ package model.mario
 			mControl = new MarioController(mData);
 			
 			stateMachine = new  StateMachine(this);
-			stateMachine.currentState = WalkState.getInstance("walkstate", this);
+			stateMachine.currentState = new WalkState("walkstate", this);//WalkState.getInstance("walkstate", this);
+		}
+		
+		public function createBullets(b:IBullets):void
+		{
+			b.create(mView.parent, mView.x + mView.width/2, mView.y+mView.height/2);
+			stateMachine.currentState = new IdleSate("idlestate", this);
 		}
 		
 		public function showMario(parent:DisplayObjectContainer,  posx:Number , posy:Number):void
@@ -69,5 +74,11 @@ package model.mario
 			// TODO Auto Generated method stub
 			return null;
 		}
+		
+		public function idle():void
+		{
+			//do noting...
+		}
+		
 	}
 }
