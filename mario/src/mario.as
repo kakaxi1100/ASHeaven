@@ -15,10 +15,10 @@ package
 		{
 			//1
 			MarioManager.getInstance().initModel();
-			MarioManager.getInstance().showMario(this);
+			MarioManager.getInstance().showMario(this,100,100);
 			
 			ObstacleManager.getInstance().initModel();
-			ObstacleManager.getInstance().showObstacle(this, 100, 0);
+			ObstacleManager.getInstance().showObstacle(this, 200, 100);
 			
 			BulletsManager.getInstance().initModel();
 			
