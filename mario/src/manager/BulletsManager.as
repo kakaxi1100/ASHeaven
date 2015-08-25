@@ -28,7 +28,6 @@ package manager
 		
 		public function update():void
 		{
-			mModel.update();
 		}
 		
 		public function getModel():CannonBulletModel

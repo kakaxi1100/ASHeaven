@@ -4,9 +4,17 @@ package model.shoot.cannonshoot
 	
 	public class CannonShootView extends Sprite
 	{
-		public function CannonShootView()
+		private var mData:CannonShootData;
+		public function CannonShootView(data:CannonShootData)
 		{
 			super();
+			mData = data;
+		}
+		
+		internal function setPosition(posx:Number, posy:Number):void
+		{
+			this.x = posx;
+			this.y = posy;
 		}
 	}
 }
