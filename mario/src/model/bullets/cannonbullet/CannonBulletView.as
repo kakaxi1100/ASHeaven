@@ -4,10 +4,13 @@ package model.bullets.cannonbullet
 	
 	public class CannonBulletView extends Sprite
 	{
+		private var mData:CannonBulletData;
 		private var mSkin:Sprite;
-		public function CannonBulletView()
+		public function CannonBulletView(data:CannonBulletData)
 		{
 			super();
+		
+			mData = data;
 			
 			mSkin = new Sprite();
 			mSkin.graphics.beginFill(0,1);
@@ -20,6 +23,12 @@ package model.bullets.cannonbullet
 		{
 			this.x = posx;
 			this.y = posy;
+		}
+		
+		internal function walk():void
+		{
+			this.x += mData.speed*Math.cos(mData.angle);
+			this.y += mData.speed*Math.sin(mData.angle);
 		}
 	}
 }

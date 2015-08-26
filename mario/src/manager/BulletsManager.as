@@ -1,12 +1,12 @@
 package manager
 {
-	import base.port.ICollisional;
+	import base.port.IBullets;
 	
 	import model.bullets.cannonbullet.CannonBulletModel;
 
 	public class BulletsManager
 	{
-		private var mModel:CannonBulletModel;
+		private var mModel:Vector.<CannonBulletModel>;
 		private static var instance:BulletsManager;
 		public function BulletsManager()
 		{
@@ -18,21 +18,23 @@ package manager
 		
 		public function initModel():void
 		{
-			mModel = new CannonBulletModel();			
+			mModel = new Vector.<CannonBulletModel>();			
 		}
 		
-		public function checkCollision(c:ICollisional):void
+		public function createBullets():IBullets
 		{
-			//mModel.checkCollsion(c);
+			var temp:CannonBulletModel = new CannonBulletModel();
+			mModel.push(temp);
+			return temp;
 		}
 		
 		public function update():void
 		{
+			for each(var item:CannonBulletModel in mModel)
+			{
+				item.update();
+			}
 		}
 		
-		public function getModel():CannonBulletModel
-		{
-			return mModel;
-		}
 	}
 }
